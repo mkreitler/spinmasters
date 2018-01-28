@@ -23,6 +23,12 @@
   <preference name="detect-data-types" value="false" />
   <preference name="exit-on-suspend" value="false" />
   <preference name="deployment-target" value="7.0" />
+  <edit-config file="*-Info.plist" target="UIStatusBarHidden" mode="merge">
+    <true/>
+  </edit-config>
+  <edit-config file="*-Info.plist" target="UIViewControllerBasedStatusBarAppearance" mode="merge">
+    <false/>
+  </edit-config>
 
   <!-- Android only -->
   <preference name="android-build-tool" value="ant|gradle" />
