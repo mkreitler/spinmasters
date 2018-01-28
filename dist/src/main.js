@@ -3,8 +3,8 @@ var sm = {
 	screenHeight: window.innerHeight, // * window.devicePixelRatio,
 	screenSizeX: window.screen.width, // * window.devicePixelRatio,
 	screenSizeY: window.screen.height, // * window.devicePixelRatio,
-	baseWidth: 960,
-	baseHeight: 640,
+	baseWidth: 480,
+	baseHeight: 320,
 	width: 0,
 	height: 0,
 	scale: 1,
@@ -28,8 +28,6 @@ var sm = {
 			this.width = this.baseWidth;
 			this.height = this.baseHeight;
 		}
-
-		console.log("Scale is :" + this.scale);
 	},
 
 	listenFor: function(message, listener) {
@@ -135,7 +133,7 @@ var sm = {
 	    // sm.game.load.image('world', 		'./game/res/bitmaps/world.png',		24, 24);
 	    // sm.game.load.image('creatures', 	'./game/res/bitmaps/creatures.png', 24, 24);
 
-	    sm.game.load.bitmapFont('charybdis_72', './res/fonts/charybdis_72/font.png', './res/fonts/charybdis_72/font.fnt');
+	    sm.game.load.bitmapFont('charybdis', './res/fonts/charybdis/font.png', './res/fonts/charybdis/font.fnt');
 	},
 
 	create: function() {
@@ -145,10 +143,12 @@ var sm = {
 		sm.createGfxBuffer();
 		sm.game.stage.backgroundColor = 0x0000ff;
 
-		print.init(sm.game, "charybdis_72");
+		print.init(sm.game, "charybdis");
 		print.tab = sm.game.width / 2 - Math.min(sm.width, sm.game.width) / 2;
-		print.vtab = sm.game.height / 2 - Math.min(sm.game.height, sm.height) / 2;
+		print.vtab = sm.game.height / 2 - Math.min(sm.game.height, sm.height) / 2 * 0.975;
 		print.scale = Math.max(1, sm.scale);
+		print.vSpace = 0.9;
+
 		print.next("Screen Width:" + sm.screenWidth);
 		print.next("Screen Height: " + sm.screenHeight);
 		print.next("Screen Size X: " + sm.screenSizeX);

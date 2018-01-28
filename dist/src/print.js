@@ -1,9 +1,12 @@
 var print = {
 	lines: [],
-	size: 32,
+	size: 16,
 	tab: 0,
 	vtab: 0,
 	scale: 1,
+	vSpace: 1.0,
+	hAnchor: 0.0,
+	vAnchor: 1.0,
 
 	init: function(game, font) {
 		this.game = game;
@@ -20,7 +23,7 @@ var print = {
 	},
 
 	next: function(msg) {
-		this.at(msg, this.tab, this.vtab + (this.lines.length + 1) * this.size * this.scale);
+		this.at(msg, this.tab, Math.round(this.vtab + (this.lines.length + 1) * this.size * this.scale * this.vSpace));
 	},
 
 	at: function(msg, x, y) {
@@ -33,7 +36,7 @@ var print = {
 		bmpTxt = this.game.add.bitmapText(0, 0, this.font, msg, this.size);
 
 		this.lines.push(bmpTxt);
-		bmpTxt.anchor.set(0.0, 1.0);
+		bmpTxt.anchor.set(this.hAnchor, this.vAnchor);
 		bmpTxt.x = x;
 		bmpTxt.y = y;
 		bmpTxt.scale.set(this.scale, this.scale);
