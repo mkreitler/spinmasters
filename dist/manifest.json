@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Codelab",
+  "version": "1",
+  "icons": {
+    "128": "calculator-128.png",
+    "16": "calculator-16.png"
+  },
+  "permissions": [],
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "minimum_chrome_version": "28"
+}
+
