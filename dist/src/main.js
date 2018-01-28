@@ -1,8 +1,8 @@
 var sm = {
-	screenWidth: window.innerWidth * window.devicePixelRatio,
-	screenHeight: window.innerHeight * window.devicePixelRatio,
-	screenSizeX: window.screen.width * window.devicePixelRatio,
-	screenSizeY: window.screen.height * window.devicePixelRatio,
+	screenWidth: window.innerWidth, // * window.devicePixelRatio,
+	screenHeight: window.innerHeight, // * window.devicePixelRatio,
+	screenSizeX: window.screen.width, // * window.devicePixelRatio,
+	screenSizeY: window.screen.height, // * window.devicePixelRatio,
 	baseWidth: 960,
 	baseHeight: 640,
 	width: 0,
@@ -146,15 +146,15 @@ var sm = {
 		sm.game.stage.backgroundColor = 0x0000ff;
 
 		print.init(sm.game, "charybdis_72");
-		print.tab = sm.game.width / 2 - sm.width / 2;
-		print.vtab = sm.game.height / 2 - sm.height / 2;
-		print.scale = sm.scale;
+		print.tab = sm.game.width / 2 - Math.min(sm.width, sm.game.width) / 2;
+		print.vtab = sm.game.height / 2 - Math.min(sm.game.height, sm.height) / 2;
+		print.scale = Math.max(1, sm.scale);
 		print.next("Screen Width:" + sm.screenWidth);
 		print.next("Screen Height: " + sm.screenHeight);
 		print.next("Screen Size X: " + sm.screenSizeX);
 		print.next("Screen Size Y: " + sm.screenSizeY);
 
-		sm.assert(sm.scale > 0, "Device screen too small to support app!");
+		// sm.assert(sm.scale > 0, "Device screen too small to support app!");
 		sm.scale = Math.max(sm.scale, 1);
 
 		sm.cursorKeys = sm.game.input.keyboard.createCursorKeys();
