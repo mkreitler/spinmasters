@@ -1,6 +1,8 @@
 var sm = {
-	screenWidth: window.innerWidth * window.devicePixelRatio, // window.screen.width * window.devicePixelRatio,
-	screenHeight: window.innerHeight * window.devicePixelRatio, // window.screen.height * window.devicePixelRatio,
+	screenWidth: window.innerWidth * window.devicePixelRatio,
+	screenHeight: window.innerHeight * window.devicePixelRatio,
+	screenSizeX: window.screen.width * window.devicePixelRatio,
+	screenSizeY: window.screen.height * window.devicePixelRatio,
 	baseWidth: 960,
 	baseHeight: 640,
 	width: 0,
@@ -17,8 +19,6 @@ var sm = {
 		var heightRatio = Math.floor(this.screenHeight / this.baseHeight);
 
 		this.scale = Math.min(widthRatio, heightRatio);
-
-		console.log("widthRatio: " + widthRatio + ",  heightRatio: " + heightRatio);
 
 		if (this.scale > 0) {
 			this.width = this.baseWidth * this.scale;
@@ -143,7 +143,16 @@ var sm = {
 		var ctxt = null;
 
 		sm.createGfxBuffer();
-		sm.game.stage.backgroundColor = 0x000000;
+		sm.game.stage.backgroundColor = 0x0000ff;
+
+		print.init(sm.game, "charybdis_72");
+		print.tab = sm.game.width / 2 - sm.width / 2;
+		print.vtab = sm.game.height / 2 - sm.height / 2;
+		print.scale = sm.scale;
+		print.next("Screen Width:" + sm.screenWidth);
+		print.next("Screen Height: " + sm.screenHeight);
+		print.next("Screen Size X: " + sm.screenSizeX);
+		print.next("Screen Size Y: " + sm.screenSizeY);
 
 		sm.assert(sm.scale > 0, "Device screen too small to support app!");
 		sm.scale = Math.max(sm.scale, 1);
@@ -200,7 +209,7 @@ var sm = {
 		var x = Math.floor(sm.screenWidth / 2);
 		var y = Math.floor(sm.screenHeight / 2);
 
-	    this.gfxBuffer = sm.game.add.bitmapData(sm.width, sm.height);
+	    this.gfxBuffer = sm.game.add.bitmapData(sm.baseWidth, sm.baseHeight);
 	    this.gfxBuffer.addToWorld(x, y, 0.5, 0.5, this.scale, this.scale);
 
 	    // DEBUG
