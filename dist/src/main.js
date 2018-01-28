@@ -149,6 +149,10 @@ var sm = {
 		print.scale = Math.max(1, sm.scale);
 		print.vSpace = 0.9;
 
+		if (StatusBar) {
+			StatusBar.hide();
+		}
+
 		print.next("Screen Width:" + sm.screenWidth);
 		print.next("Screen Height: " + sm.screenHeight);
 		print.next("Screen Size X: " + sm.screenSizeX);

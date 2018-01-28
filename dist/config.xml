@@ -13,6 +13,8 @@
       Kreitler
   </author>
 
+  <plugin name="cordova-plugin-statusbar" spec="~2.4.1" />
+
   <!-- all platforms -->
   <preference name="orientation" value="landscape" />
   <preference name="fullscreen" value="true" />
