@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.phonegap.example"
+    id          = "com.thinkagaingames.spinmasters"
     versionCode = "10"
     version     = "1.0.0" >
 
@@ -23,12 +23,7 @@
   <preference name="detect-data-types" value="false" />
   <preference name="exit-on-suspend" value="false" />
   <preference name="deployment-target" value="7.0" />
-  <edit-config file="*-Info.plist" target="UIStatusBarHidden" mode="merge">
-    <true/>
-  </edit-config>
-  <edit-config file="*-Info.plist" target="UIViewControllerBasedStatusBarAppearance" mode="merge">
-    <false/>
-  </edit-config>
+  <preference name="StatusBarOverlaysWebView" value="false" />
 
   <!-- Android only -->
   <preference name="android-build-tool" value="ant|gradle" />
